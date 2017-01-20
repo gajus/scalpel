@@ -1,0 +1,53 @@
+{
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "dependencies": {
+    "nearley": "^2.7.10"
+  },
+  "description": "A CSS selector parser.",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.22.2",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-flow-comments": "^6.22.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-register": "^6.22.0",
+    "eslint": "^3.13.1",
+    "eslint-config-canonical": "^7.1.0",
+    "flow-bin": "^0.38.0",
+    "husky": "^0.13.0-1",
+    "webpack": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=5"
+  },
+  "keywords": [
+    "css",
+    "selector",
+    "parser"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "./src/index.js",
+  "name": "scalpel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajus/scalpel"
+  },
+  "scripts": {
+    "build": "npm run compile-grammar && babel ./src --out-dir ./dist --copy-files --source-maps",
+    "compile-grammar": "nearleyc ./src/grammar.ne --out ./src/grammar.js",
+    "lint": "eslint ./src ./test && flow",
+    "precommit": "npm run lint && npm run test",
+    "test": "ava --verbose"
+  },
+  "version": "2.0.0"
+}

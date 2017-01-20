@@ -1,0 +1,15 @@
+coverage
+demo
+dist
+node_modules
+src/grammar.js
+*.log
+.*
+!.babelrc
+!.editorconfig
+!.eslintignore
+!.eslintrc
+!.flowconfig
+!.gitignore
+!.npmignore
+!.travis.yml
