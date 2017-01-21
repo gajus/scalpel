@@ -13,7 +13,7 @@ A [CSS selector](https://www.w3.org/TR/css3-selectors/) parser.
 It parses any valid CSS3 selector into [tokens](#token-types). [Try it](https://jsbin.com/namibub/2/edit?output)!
 
 > Found a selector that cannot be parsed?
-> [Raise an issue](https://github.com/gajus/scalpel/issues/new?title=selector%20X%20does%20not%20work&body=The%20following%20X%20(https://www.w3.org/TR/css3-selectors/[link%20to%20the%20reference])%20selector%20produces%20Y%20error.).
+> [Raise an issue](https://github.com/gajus/scalpel/issues/new?title=selector%20X%20does%20not%20work&body=The%20following%20X%20(https://www.w3.org/TR/css3-selectors/)%20selector%20produces%20Y%20error.).
 
 This parser is implemented using [Earley parser algorithm](https://en.wikipedia.org/wiki/Earley_parser). Read about Writing a CSS selector parser in under 120 LoC.
 
