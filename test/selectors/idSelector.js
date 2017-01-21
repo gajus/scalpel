@@ -14,8 +14,14 @@ const validIdNames = [
 
 for (const validIdName of validIdNames) {
   test('valid: #' + validIdName, (t): void => {
+    const tokens = parse('#' + validIdName);
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse('#' + validIdName)[0].body[0],
+      tokens[0].body[0],
       {
         name: validIdName,
         type: 'idSelector'

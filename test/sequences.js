@@ -163,8 +163,14 @@ const validSelectors = {
 
 for (const [selector, expectedResult] of Object.entries(validSelectors)) {
   test('valid: ' + selector, (t): void => {
+    const tokens = parse(selector);
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(selector)[0].body.map((result) => {
+      tokens[0].body.map((result) => {
         if (result.type === 'universalSelector') {
           return '*';
         }

@@ -14,8 +14,14 @@ const pseudoClassSelectorNames = [
 
 for (const pseudoClassSelectorName of pseudoClassSelectorNames) {
   test('valid :' + pseudoClassSelectorName, (t): void => {
+    const tokens = parse(':' + pseudoClassSelectorName);
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(':' + pseudoClassSelectorName)[0].body[0],
+      tokens[0].body[0],
       {
         name: pseudoClassSelectorName,
         type: 'pseudoClassSelector'
@@ -46,8 +52,14 @@ const unquotedValues = [
 
 for (const unquotedValue of unquotedValues) {
   test('valid :not(' + unquotedValue + ')', (t): void => {
+    const tokens = parse(':not(' + unquotedValue + ')');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(':not(' + unquotedValue + ')')[0].body[0],
+      tokens[0].body[0],
       {
         name: 'not',
         parameters: [
@@ -90,8 +102,14 @@ const quotedValuesSingleQuotes = [
 
 for (const quotedValueSingleQuotes of quotedValuesSingleQuotes) {
   test('valid :not(' + quotedValueSingleQuotes + ')', (t): void => {
+    const tokens = parse(':not(' + quotedValueSingleQuotes + ')');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(':not(' + quotedValueSingleQuotes + ')')[0].body[0],
+      tokens[0].body[0],
       {
         name: 'not',
         parameters: [
@@ -116,8 +134,14 @@ const quotedValuesDoubleQuotes = [
 
 for (const quotedValueDoubleQuotes of quotedValuesDoubleQuotes) {
   test('valid :not(' + quotedValueDoubleQuotes + ')', (t): void => {
+    const tokens = parse(':not(' + quotedValueDoubleQuotes + ')');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(':not(' + quotedValueDoubleQuotes + ')')[0].body[0],
+      tokens[0].body[0],
       {
         name: 'not',
         parameters: [
@@ -140,8 +164,14 @@ const multipleParameters = [
 
 for (const multipleParamter of multipleParameters) {
   test('valid :not(' + multipleParamter + ')', (t): void => {
+    const tokens = parse(':not(' + multipleParamter + ')');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(':not(' + multipleParamter + ')')[0].body[0],
+      tokens[0].body[0],
       {
         name: 'not',
         parameters: [

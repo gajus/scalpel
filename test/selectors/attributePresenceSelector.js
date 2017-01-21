@@ -15,8 +15,14 @@ const validAttributeNames = [
 
 for (const validAttributeName of validAttributeNames) {
   test('[' + validAttributeName + ']', (t): void => {
+    const tokens = parse('[' + validAttributeName + ']');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse('[' + validAttributeName + ']')[0].body[0],
+      tokens[0].body[0],
       {
         name: validAttributeName,
         type: 'attributePresenceSelector'

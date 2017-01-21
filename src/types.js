@@ -58,21 +58,23 @@ type UniversalSelectorTokenType = {|
   +type: 'universalSelector'
 |};
 
-export type TokenType =
-  AdjacentSiblingCombinatorTokenType |
+export type SelectorBodyTokenType =
   AttributePresenceSelectorTokenType |
   AttributeValueSelectorTokenType |
-  ChildCombinatorTokenType |
   ClassSelectorTokenType |
-  DescendantCombinatorTokenType |
-  GeneralSiblingCombinatorTokenType |
   IdSelectorTokenType |
   PseudoClassSelectorTokenType |
   PseudoElementSelectorTokenType |
   TypeSelectorTokenType |
-  UniversalSelectorTokenType
+  UniversalSelectorTokenType;
+
+export type CombinatorTokenType =
+  AdjacentSiblingCombinatorTokenType |
+  ChildCombinatorTokenType |
+  DescendantCombinatorTokenType |
+  GeneralSiblingCombinatorTokenType;
 
 export type SelectorTokenType = {|
   +type: 'selector',
-  +body: Array<TokenType>
+  +body: Array<SelectorBodyTokenType>
 |};

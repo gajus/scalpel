@@ -14,8 +14,14 @@ const pseudoElementSelectorNames = [
 
 for (const pseudoElementSelectorName of pseudoElementSelectorNames) {
   test('valid :' + pseudoElementSelectorName, (t): void => {
+    const tokens = parse('::' + pseudoElementSelectorName);
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse('::' + pseudoElementSelectorName)[0].body[0],
+      tokens[0].body[0],
       {
         name: pseudoElementSelectorName,
         type: 'pseudoElementSelector'

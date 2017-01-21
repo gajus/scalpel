@@ -6,8 +6,14 @@ import {
 } from '../helpers';
 
 test('*', (t): void => {
+  const tokens = parse('*');
+
+  if (tokens[0].type !== 'selector') {
+    throw new Error('Unexpected state.');
+  }
+
   t.deepEqual(
-    parse('*')[0].body[0],
+    tokens[0].body[0],
     {
       type: 'universalSelector'
     }

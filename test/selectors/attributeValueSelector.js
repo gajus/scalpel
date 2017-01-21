@@ -16,8 +16,14 @@ const attributeValueOperators = [
 
 for (const attributeValueOperator of attributeValueOperators) {
   test('valid comparison operator: [foo' + attributeValueOperator + 'bar]', (t): void => {
+    const tokens = parse('[foo' + attributeValueOperator + 'bar]');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse('[foo' + attributeValueOperator + 'bar]')[0].body[0],
+      tokens[0].body[0],
       {
         name: 'foo',
         operator: attributeValueOperator,
@@ -43,8 +49,14 @@ const validAttributeValues = [
 
 for (const validAttributeValue of validAttributeValues) {
   test('valid attribute value: [foo=' + validAttributeValue + ']', (t): void => {
+    const tokens = parse('[foo=' + validAttributeValue + ']');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse('[foo=' + validAttributeValue + ']')[0].body[0],
+      tokens[0].body[0],
       {
         name: 'foo',
         operator: '=',

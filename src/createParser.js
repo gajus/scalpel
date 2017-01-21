@@ -4,12 +4,13 @@ import {
   Parser
 } from 'nearley';
 import type {
+  CombinatorTokenType,
   SelectorTokenType
 } from './types';
 import grammar from './grammar';
 
 export default () => {
-  const parse = (selector: string): Array<SelectorTokenType> => {
+  const parse = (selector: string): Array<SelectorTokenType | CombinatorTokenType> => {
     const parser = new Parser(grammar.ParserRules, grammar.ParserStart);
 
     const results = parser.feed(selector).results;

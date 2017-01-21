@@ -16,8 +16,14 @@ const validNodeNames = [
 
 for (const validNodeName of validNodeNames) {
   test('valid:' + validNodeName, (t): void => {
+    const tokens = parse(validNodeName);
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
     t.deepEqual(
-      parse(validNodeName)[0].body[0],
+      tokens[0].body[0],
       {
         name: validNodeName,
         type: 'typeSelector'
