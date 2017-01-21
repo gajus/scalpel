@@ -11,7 +11,7 @@ type AttributePresenceSelectorTokenType = {|
 
 type AttributeValueSelectorTokenType = {|
   +name: string,
-  +operator: Array<'=' | '~=' | '|=' | '^=' | '$=' | '*='>,
+  +operator: '=' | '~=' | '|=' | '^=' | '$=' | '*=',
   +type: 'attributeValueSelector',
   +value: string
 |};
