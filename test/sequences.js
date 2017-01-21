@@ -18,6 +18,12 @@ const validSelectors = {
     'baz',
     'corge'
   ],
+  '#bar.baz:corge()::grault': [
+    'bar',
+    'baz',
+    'corge',
+    'grault'
+  ],
   '#bar.baz0.baz1': [
     'bar',
     'baz0',
@@ -34,6 +40,11 @@ const validSelectors = {
     '*',
     'corge'
   ],
+  '*:corge()::grault': [
+    '*',
+    'corge',
+    'grault'
+  ],
   '*[qux]': [
     '*',
     'qux'
@@ -43,12 +54,23 @@ const validSelectors = {
     'qux',
     'corge'
   ],
+  '*[qux]:corge()::grault': [
+    '*',
+    'qux',
+    'corge',
+    'grault'
+  ],
   '.baz': [
     'baz'
   ],
   '.baz:corge()': [
     'baz',
     'corge'
+  ],
+  '.baz:corge()::grault': [
+    'baz',
+    'corge',
+    'grault'
   ],
   '.baz[qux]': [
     'baz',
@@ -58,8 +80,15 @@ const validSelectors = {
     'baz0',
     'baz1'
   ],
+  '::grault': [
+    'grault'
+  ],
   ':corge()': [
     'corge'
+  ],
+  ':corge()::grault': [
+    'corge',
+    'grault'
   ],
   ':corge0():corge1()': [
     'corge0',
@@ -71,6 +100,11 @@ const validSelectors = {
   '[qux]:corge()': [
     'qux',
     'corge'
+  ],
+  '[qux]:corge()::grault': [
+    'qux',
+    'corge',
+    'grault'
   ],
   '[qux0][qux1]': [
     'qux0',
@@ -91,12 +125,27 @@ const validSelectors = {
     'baz',
     'corge'
   ],
+  'foo#bar.baz:corge()::grault': [
+    'foo',
+    'bar',
+    'baz',
+    'corge',
+    'grault'
+  ],
   'foo#bar.baz[qux]:corge()': [
     'foo',
     'bar',
     'baz',
     'qux',
     'corge'
+  ],
+  'foo#bar.baz[qux]:corge()::grault': [
+    'foo',
+    'bar',
+    'baz',
+    'qux',
+    'corge',
+    'grault'
   ],
   'foo.baz': [
     'foo',

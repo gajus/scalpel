@@ -32,6 +32,7 @@ This parser is implemented using [Earley parser algorithm](https://en.wikipedia.
   * [`generalSiblingCombinator`](#generalsiblingcombinator)
   * [`idSelector`](#idselector)
   * [`pseudoClassSelector`](#pseudoclassselector)
+  * [`pseudoElementSelector`](#pseudoelementselector)
   * [`typeSelector`](#typeselector)
   * [`universalSelector`](#universalselector)
 * [Development](#development)
@@ -66,6 +67,7 @@ const tokens: SelectorTokenType = parser.parse('.foo.bar');
 |[`generalSiblingCombinator`](#generalsiblingcombinator)|A [general sibling combinator](https://www.w3.org/TR/css3-selectors/#general-sibling-combinators).|`.baz0 ~ .baz1`|
 |[`idSelector`](#idselector)|An [ID selector](https://www.w3.org/TR/css3-selectors/#id-selectors)|`#bar`|
 |[`pseudoClassSelector`](#pseudoclassselector)|A [pseudo-class selector](https://www.w3.org/TR/css3-selectors/#pseudo-classes).|`:corge`, `:corge()`, `:corge(val0, 'val1', "val2")`|
+|[`pseudoElementSelector`](#pseudoelementselector)|A [pseudo-element selector](https://www.w3.org/TR/css3-selectors/#pseudo-elements).|`::grault`|
 |[`typeSelector`](#typeselector)|A [type selector](https://www.w3.org/TR/css3-selectors/#type-selectors).|`foo`|
 |[`universalSelector`](#universalselector)|A [universal selector](https://www.w3.org/TR/css3-selectors/#universal-selector).|`*`|
 
@@ -134,6 +136,13 @@ Tokens have fields that describe additional information about the token. Fields 
 |`name`|Name of the pseudo-class.|"corge" in `#bar:corge()`|
 |`parameters`|Array of parameter values.|"var0", "var1" and "var2" in `:corge(var0, 'var1', "var2")`|
 |`type`|Name of the token type.|"pseudoClassSelector"|
+
+### `pseudoElementSelector`
+
+|Name|Description|Example|
+|---|---|---|
+|`name`|Name of the pseudo-element.|"grault" in `#bar::grault`|
+|`type`|Name of the token type.|"pseudoElementSelector"|
 
 ### `typeSelector`
 

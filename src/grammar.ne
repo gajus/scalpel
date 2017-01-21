@@ -37,8 +37,8 @@ combinator ->
 selector -> selectorBody {% d => ({type: 'selector', body: d[0]}) %}
 
 selectorBody ->
-    typeSelector:? idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* {% (d, i, reject) => { const selectors = flatten(d); if (!selectors.length) return reject; return selectors; } %}
-  | universalSelector idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* {% flatten %}
+    typeSelector:? idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* pseudoElementSelector:? {% (d, i, reject) => { const selectors = flatten(d); if (!selectors.length) return reject; return selectors; } %}
+  | universalSelector idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* pseudoElementSelector:? {% flatten %}
 
 typeSelector -> attributeName {% d => ({type: 'typeSelector', name: d[0]}) %}
 
@@ -100,6 +100,9 @@ classParameter ->
     [^()"', ]:+ {% d => d[0].join('') %}
   | sqstring {% id %}
   | dqstring {% id %}
+
+pseudoElementSelector ->
+    "::" pseudoClassSelectorName {% d => ({type: 'pseudoElementSelector', name: d[1]}) %}
 
 pseudoClassSelector ->
     ":" pseudoClassSelectorName {% d => ({type: 'pseudoClassSelector', name: d[1]}) %}

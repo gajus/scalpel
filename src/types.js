@@ -44,6 +44,11 @@ type PseudoClassSelectorTokenType = {|
   +type: 'pseudoClassSelector'
 |};
 
+type PseudoElementSelectorTokenType = {|
+  +name: string,
+  +type: 'pseudoElementSelector'
+|};
+
 type TypeSelectorTokenType = {|
   +name: string,
   +type: 'typeSelector'
@@ -63,6 +68,7 @@ export type TokenType =
   GeneralSiblingCombinatorTokenType |
   IdSelectorTokenType |
   PseudoClassSelectorTokenType |
+  PseudoElementSelectorTokenType |
   TypeSelectorTokenType |
   UniversalSelectorTokenType
 
