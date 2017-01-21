@@ -6,6 +6,13 @@ import {
 } from './helpers';
 
 const combinators = {
+  'foo + bar + baz': [
+    'selector',
+    'adjacentSiblingCombinator',
+    'selector',
+    'adjacentSiblingCombinator',
+    'selector'
+  ],
   'foo > bar > baz': [
     'selector',
     'childCombinator',
@@ -13,25 +20,18 @@ const combinators = {
     'childCombinator',
     'selector'
   ],
-  'foo ~ bar + baz': [
+  'foo ~ bar ~ baz': [
     'selector',
     'generalSiblingCombinator',
     'selector',
-    'adjacentSiblingCombinator',
+    'generalSiblingCombinator',
     'selector'
   ],
-  'foo bar   baz': [
+  'foo bar baz': [
     'selector',
     'descendantCombinator',
     'selector',
     'descendantCombinator',
-    'selector'
-  ],
-  'foo>bar>baz': [
-    'selector',
-    'childCombinator',
-    'selector',
-    'childCombinator',
     'selector'
   ]
 };
