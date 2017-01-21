@@ -12,4 +12,5 @@ src/grammar.js
 !.flowconfig
 !.gitignore
 !.npmignore
+!.README
 !.travis.yml
