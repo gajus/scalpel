@@ -20,7 +20,7 @@ This parser is implemented using [Earley parser algorithm](https://en.wikipedia.
 > Note:
 >
 > This parser could be extended to support the entire CSS grammar.
-> I don't have such a use case. However, should you want to add new grammar, [raise an issue](https://github.com/gajus/scalpel/issues/new.
+> I don't have such a use case. However, should you want to add new grammar, [raise an issue](https://github.com/gajus/scalpel/issues/new).
 
 * [Usage](#usage)
 * [Token types](#token-types)
