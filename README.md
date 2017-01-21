@@ -41,12 +41,34 @@ This parser is implemented using [Earley parser algorithm](https://en.wikipedia.
 
 ```js
 import {
+  createGenerator,
   createParser
 } from 'scalpel';
 
+const generator = createGenerator();
 const parser = createParser();
 
-const tokens: SelectorTokenType = parser.parse('.foo.bar');
+const tokens: Array<SelectorTokenType | CombinatorTokenType> = parser.parse('.foo.bar');
+
+// [
+//   {
+//     type: 'selector',
+//     body: [
+//       {
+//         type: 'classSelector',
+//         name: 'foo'
+//       },
+//       {
+//         type: 'classSelector',
+//         name: 'bar'
+//       }
+//     ]
+//   }
+// ]
+
+const selector: string = generator.generate(token);
+
+// .foo.bar
 
 ```
 
