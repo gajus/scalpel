@@ -50,7 +50,7 @@ for (const unquotedValue of unquotedValues) {
       parse(':not(' + unquotedValue + ')')[0].body[0],
       {
         name: 'not',
-        paramters: [
+        parameters: [
           unquotedValue
         ],
         type: 'pseudoClassSelector'
@@ -94,7 +94,7 @@ for (const quotedValueSingleQuotes of quotedValuesSingleQuotes) {
       parse(':not(' + quotedValueSingleQuotes + ')')[0].body[0],
       {
         name: 'not',
-        paramters: [
+        parameters: [
           quotedValueSingleQuotes.replace('\\\'', '\'').slice(1, -1)
         ],
         type: 'pseudoClassSelector'
@@ -120,7 +120,7 @@ for (const quotedValueDoubleQuotes of quotedValuesDoubleQuotes) {
       parse(':not(' + quotedValueDoubleQuotes + ')')[0].body[0],
       {
         name: 'not',
-        paramters: [
+        parameters: [
           quotedValueDoubleQuotes.replace('\\"', '"').slice(1, -1)
         ],
         type: 'pseudoClassSelector'
@@ -129,7 +129,7 @@ for (const quotedValueDoubleQuotes of quotedValuesDoubleQuotes) {
   });
 }
 
-const multipleParamters = [
+const multipleParameters = [
   'foo,bar,baz',
   'foo, bar, baz',
   '"foo", "bar", "baz"',
@@ -138,13 +138,13 @@ const multipleParamters = [
   "'foo', 'bar', 'baz'"
 ];
 
-for (const multipleParamter of multipleParamters) {
+for (const multipleParamter of multipleParameters) {
   test('valid :not(' + multipleParamter + ')', (t): void => {
     t.deepEqual(
       parse(':not(' + multipleParamter + ')')[0].body[0],
       {
         name: 'not',
-        paramters: [
+        parameters: [
           'foo',
           'bar',
           'baz'

@@ -103,7 +103,7 @@ classParameter ->
 
 pseudoClassSelector ->
     ":" pseudoClassSelectorName {% d => ({type: 'pseudoClassSelector', name: d[1]}) %}
-  | ":" pseudoClassSelectorName "(" classParameters ")" {% d => ({type: 'pseudoClassSelector', name: d[1], paramters: d[3]}) %}
+  | ":" pseudoClassSelectorName "(" classParameters ")" {% d => ({type: 'pseudoClassSelector', name: d[1], parameters: d[3]}) %}
 
 pseudoClassSelectorName ->
   [a-zA-Z] [a-zA-Z0-9-_]:+ {% d => d[0] + d[1].join('') %}
