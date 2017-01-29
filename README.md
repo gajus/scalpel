@@ -5,7 +5,6 @@
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
 
-
 <img src='https://rawgit.com/gajus/scalpel/master/.README/scalpel.svg' height='300' />
 
 A [CSS selector](https://www.w3.org/TR/css3-selectors/) parser.

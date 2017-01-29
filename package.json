@@ -25,6 +25,7 @@
     "eslint-config-canonical": "^7.1.0",
     "flow-bin": "^0.38.0",
     "husky": "^0.13.0-1",
+    "semantic-release": "^6.3.2",
     "webpack": "^2.2.0"
   },
   "engines": {
