@@ -1,15 +1,11 @@
 @{%
+  const flattenDeep = require('lodash.flattendeep');
   const appendItem = (a, b) => d => d[a].concat([d[b]]);
   const appendItemChar = (a, b) => d => d[a].concat(d[b]);
 
   const flatten = d => {
     d = d.filter((r) => { return r !== null; });
-    return d.reduce(
-      (a, b) => {
-        return a.concat(b);
-      },
-      []
-    );
+    return flattenDeep(d);
   };
 
   const combinatorMap = {
@@ -37,8 +33,16 @@ combinator ->
 selector -> selectorBody {% d => ({type: 'selector', body: d[0]}) %}
 
 selectorBody ->
-    typeSelector:? idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* pseudoElementSelector:? {% (d, i, reject) => { const selectors = flatten(d); if (!selectors.length) return reject; return selectors; } %}
-  | universalSelector idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* pseudoElementSelector:? {% flatten %}
+    typeSelector:? simpleSelector:* {% (d, i, reject) => { const selectors = flatten(d); if (!selectors.length) return reject; return selectors; } %}
+  | universalSelector simpleSelector:* {% flatten %}
+
+simpleSelector ->
+  idSelector
+| classSelector
+| attributeValueSelector
+| attributePresenceSelector
+| pseudoClassSelector
+| pseudoElementSelector
 
 typeSelector -> attributeName {% d => ({type: 'typeSelector', name: d[0]}) %}
 
