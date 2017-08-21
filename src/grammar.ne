@@ -24,6 +24,15 @@
       })
       .concat(d[4]);
   };
+
+  const parseAsNumber = (d, i, reject) => {
+    const joined = flattenDeep(d).join('');
+    const parsed = parseFloat(joined);
+    if (isNaN(parsed)) {
+      return reject
+    }
+    return parsed
+  }
 %}
 
 combinator ->
@@ -88,12 +97,15 @@ attributeValueSelector -> "[" attributeName attributeOperator attributeValue "]"
 %}
 
 attributeValue ->
-    unquotedAttributeValue {% id %}
+  floatOrInt {% id %}
   | sqstring {% id %}
   | dqstring {% id %}
 
-unquotedAttributeValue ->
-  [^\[\]"',= ]:+ {% d => d[0].join('') %}
+floatOrInt ->
+  int "." int {% parseAsNumber %}
+  | int {% parseAsNumber %}
+
+int -> [0-9]:+
 
 classParameters ->
     null
