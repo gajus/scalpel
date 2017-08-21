@@ -23,7 +23,6 @@ const validSelectors = {
   'foo[qux^="val1"]': MIRROR,
   'foo[qux="val1"]': MIRROR,
   'foo[qux=\'val1\']': 'foo[qux="val1"]',
-  'foo[qux=val1]': 'foo[qux="val1"]',
   'foo#bar.baz': MIRROR,
   'foo#bar': MIRROR
 };

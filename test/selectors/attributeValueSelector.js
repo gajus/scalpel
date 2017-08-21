@@ -15,8 +15,8 @@ const attributeValueOperators = [
 ];
 
 for (const attributeValueOperator of attributeValueOperators) {
-  test('valid comparison operator: [foo' + attributeValueOperator + 'bar]', (t): void => {
-    const tokens = parse('[foo' + attributeValueOperator + 'bar]');
+  test('valid comparison operator: [foo' + attributeValueOperator + '"bar"]', (t): void => {
+    const tokens = parse('[foo' + attributeValueOperator + '"bar"]');
 
     if (tokens[0].type !== 'selector') {
       throw new Error('Unexpected state.');
@@ -40,16 +40,12 @@ const validAttributeValues = [
   'a123',
   'a-123',
   '_123',
-  '_-',
-
-  // eslint-disable-next-line quotes
-  "'foo123FOO_-'",
-  '"foo123FOO_-"'
+  '_-'
 ];
 
 for (const validAttributeValue of validAttributeValues) {
-  test('valid attribute value: [foo=' + validAttributeValue + ']', (t): void => {
-    const tokens = parse('[foo=' + validAttributeValue + ']');
+  test('valid attribute value: [foo="' + validAttributeValue + '"]', (t): void => {
+    const tokens = parse('[foo="' + validAttributeValue + '"]');
 
     if (tokens[0].type !== 'selector') {
       throw new Error('Unexpected state.');
@@ -78,7 +74,7 @@ const invalidAttributeValues = [
 ];
 
 for (const invalidAttributeValue of invalidAttributeValues) {
-  test('invalid attribute value: [foo=' + invalidAttributeValue + ']', (t): void => {
+  test('invalid attribute value: [foo="' + invalidAttributeValue + '"]', (t): void => {
     t.throws(() => {
       parse('[foo=' + invalidAttributeValue + ']');
     });
