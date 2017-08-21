@@ -187,7 +187,10 @@ for (const [selector, expectedResult] of Object.entries(validSelectors)) {
 }
 
 const invalidSelectors = [
-  '#bar0#bar1'
+  '##bar0#bar1',
+  'div.foo[bar',
+  'foo..bar',
+  '[[bar]]'
 ];
 
 for (const invalidSelector of invalidSelectors) {

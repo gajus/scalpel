@@ -1,15 +1,11 @@
 @{%
+  const flattenDeep = require('lodash.flattendeep');
   const appendItem = (a, b) => d => d[a].concat([d[b]]);
   const appendItemChar = (a, b) => d => d[a].concat(d[b]);
 
   const flatten = d => {
     d = d.filter((r) => { return r !== null; });
-    return d.reduce(
-      (a, b) => {
-        return a.concat(b);
-      },
-      []
-    );
+    return flattenDeep(d);
   };
 
   const combinatorMap = {
@@ -28,6 +24,15 @@
       })
       .concat(d[4]);
   };
+
+  const parseAsNumber = (d, i, reject) => {
+    const joined = flattenDeep(d).join('');
+    const parsed = parseFloat(joined);
+    if (isNaN(parsed)) {
+      return reject
+    }
+    return parsed
+  }
 %}
 
 combinator ->
@@ -37,8 +42,16 @@ combinator ->
 selector -> selectorBody {% d => ({type: 'selector', body: d[0]}) %}
 
 selectorBody ->
-    typeSelector:? idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* pseudoElementSelector:? {% (d, i, reject) => { const selectors = flatten(d); if (!selectors.length) return reject; return selectors; } %}
-  | universalSelector idSelector:? classSelector:* attributeValueSelector:* attributePresenceSelector:* pseudoClassSelector:* pseudoElementSelector:? {% flatten %}
+    typeSelector:? simpleSelector:* {% (d, i, reject) => { const selectors = flatten(d); if (!selectors.length) return reject; return selectors; } %}
+  | universalSelector simpleSelector:* {% flatten %}
+
+simpleSelector ->
+  idSelector
+| classSelector
+| attributeValueSelector
+| attributePresenceSelector
+| pseudoClassSelector
+| pseudoElementSelector
 
 typeSelector -> attributeName {% d => ({type: 'typeSelector', name: d[0]}) %}
 
@@ -84,12 +97,15 @@ attributeValueSelector -> "[" attributeName attributeOperator attributeValue "]"
 %}
 
 attributeValue ->
-    unquotedAttributeValue {% id %}
+  floatOrInt {% id %}
   | sqstring {% id %}
   | dqstring {% id %}
 
-unquotedAttributeValue ->
-  [^\[\]"',= ]:+ {% d => d[0].join('') %}
+floatOrInt ->
+  int "." int {% parseAsNumber %}
+  | int {% parseAsNumber %}
+
+int -> [0-9]:+
 
 classParameters ->
     null
