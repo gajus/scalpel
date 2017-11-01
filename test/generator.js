@@ -34,7 +34,7 @@ for (const [input, output] of Object.entries(validSelectors)) {
   const expectedResult = output === MIRROR ? input : output;
 
   if (typeof expectedResult !== 'string') {
-    throw new Error('Unexpected state.');
+    throw new TypeError('Unexpected state.');
   }
 
   test('\ninput:\t' + input + '\noutput:\t' + expectedResult, (t): void => {

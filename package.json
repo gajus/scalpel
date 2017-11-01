@@ -11,22 +11,22 @@
     ]
   },
   "dependencies": {
-    "nearley": "^2.7.10"
+    "nearley": "^2.11.0"
   },
   "description": "A CSS selector parser.",
   "devDependencies": {
-    "ava": "^0.17.0",
-    "babel-cli": "^6.22.2",
-    "babel-loader": "^6.2.10",
+    "ava": "^0.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-flow-comments": "^6.22.0",
-    "babel-preset-env": "^1.1.8",
-    "babel-register": "^6.22.0",
-    "eslint": "^3.13.1",
-    "eslint-config-canonical": "^7.1.0",
-    "flow-bin": "^0.38.0",
-    "husky": "^0.13.0-1",
-    "semantic-release": "^6.3.2",
-    "webpack": "^2.2.0"
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.10.0",
+    "eslint-config-canonical": "^9.3.1",
+    "flow-bin": "^0.57.3",
+    "husky": "^0.14.3",
+    "semantic-release": "^8.2.0",
+    "webpack": "^3.8.1"
   },
   "engines": {
     "node": ">=5"
