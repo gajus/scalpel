@@ -31,7 +31,7 @@ const renderSelector = (selectorToken: SelectorTokenType) => {
     } else if (token.type === 'pseudoClassSelector') {
       part = ':' + token.name;
 
-      if (token.parameters.length) {
+      if (token.parameters && token.parameters.length) {
         part += '(' + token.parameters.map(escapeValue).join(', ') + ')';
       }
     } else if (token.type === 'pseudoElementSelector') {
