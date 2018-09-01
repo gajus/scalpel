@@ -11,6 +11,7 @@ const MIRROR = {};
 /* eslint-disable sort-keys */
 const validSelectors = {
   '*': MIRROR,
+  '.className:focus': MIRROR,
   '::grault': MIRROR,
   'foo > bar > baz': MIRROR,
   'foo ~ bar ~ baz': MIRROR,
