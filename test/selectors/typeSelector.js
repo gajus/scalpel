@@ -10,8 +10,7 @@ const validNodeNames = [
   'foo-123',
   'FOO',
   'foo-bar',
-  '_0',
-  'foo-123'
+  '_0'
 ];
 
 for (const validNodeName of validNodeNames) {

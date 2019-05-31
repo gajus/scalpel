@@ -1,12 +1,15 @@
 {
   "plugins": [
-    "transform-flow-comments"
+    "@babel/plugin-transform-flow-strip-types"
   ],
   "presets": [
-    ["env", {
-      "targets": {
-        "node": 5
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": 10
+        }
       }
-    }]
+    ]
   ]
 }

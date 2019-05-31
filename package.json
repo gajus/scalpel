@@ -5,31 +5,36 @@
     "url": "http://gajus.com"
   },
   "ava": {
-    "babel": "inherit",
     "require": [
-      "babel-register"
+      "@babel/register"
     ]
   },
   "dependencies": {
-    "nearley": "^2.11.0"
+    "nearley": "^2.16.0"
   },
   "description": "A CSS selector parser.",
   "devDependencies": {
-    "ava": "^0.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-flow-comments": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
-    "eslint": "^4.10.0",
-    "eslint-config-canonical": "^9.3.1",
-    "flow-bin": "^0.57.3",
-    "husky": "^0.14.3",
-    "semantic-release": "^8.2.0",
-    "webpack": "^3.8.1"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "ava": "^1.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-canonical": "^17.1.0",
+    "flow-bin": "^0.99.1",
+    "flow-copy-source": "^2.0.6",
+    "husky": "^2.3.0",
+    "semantic-release": "^15.13.12"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test && npm run build"
+    }
   },
   "keywords": [
     "css",
@@ -44,7 +49,7 @@
     "url": "https://github.com/gajus/scalpel"
   },
   "scripts": {
-    "build": "npm run compile-grammar && babel ./src --out-dir ./dist --copy-files --source-maps",
+    "build": "rm -fr ./dist && npm run compile-grammar && babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
     "compile-grammar": "nearleyc ./src/grammar.ne --out ./src/grammar.js",
     "lint": "eslint ./src ./test && flow",
     "precommit": "npm run lint && npm run test",
