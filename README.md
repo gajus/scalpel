@@ -1,5 +1,6 @@
 # scalpel
 
+[![GitSpo Mentions](https://gitspo.com/badges/mentions/gajus/scalpel?style=flat-square)](https://gitspo.com/mentions/gajus/scalpel)
 [![Travis build status](http://img.shields.io/travis/gajus/scalpel/master.svg?style=flat-square)](https://travis-ci.org/gajus/scalpel)
 [![NPM version](http://img.shields.io/npm/v/scalpel.svg?style=flat-square)](https://www.npmjs.org/package/scalpel)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
