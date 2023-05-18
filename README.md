@@ -22,23 +22,36 @@ This parser is implemented using [Earley parser algorithm](https://en.wikipedia.
 > This parser could be extended to support the entire CSS grammar.
 > I don't have such a use case. However, should you want to add new grammar, [raise an issue](https://github.com/gajus/scalpel/issues/new).
 
-* [Usage](#usage)
-* [Token types](#token-types)
-* [Fields](#fields)
-  * [`adjacentSiblingCombinator`](#adjacentsiblingcombinator)
-  * [`attributePresenceSelector`](#attributepresenceselector)
-  * [`attributeValueSelector`](#attributevalueselector)
-  * [`childCombinator`](#childcombinator)
-  * [`classSelector`](#classselector)
-  * [`descendantCombinator`](#descendantcombinator)
-  * [`generalSiblingCombinator`](#generalsiblingcombinator)
-  * [`idSelector`](#idselector)
-  * [`pseudoClassSelector`](#pseudoclassselector)
-  * [`pseudoElementSelector`](#pseudoelementselector)
-  * [`typeSelector`](#typeselector)
-  * [`universalSelector`](#universalselector)
-* [Development](#development)
+- [scalpel](#scalpel)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Token types](#token-types)
+  - [Fields](#fields)
+    - [`adjacentSiblingCombinator`](#adjacentsiblingcombinator)
+    - [`attributePresenceSelector`](#attributepresenceselector)
+    - [`attributeValueSelector`](#attributevalueselector)
+    - [`childCombinator`](#childcombinator)
+    - [`classSelector`](#classselector)
+    - [`descendantCombinator`](#descendantcombinator)
+    - [`generalSiblingCombinator`](#generalsiblingcombinator)
+    - [`idSelector`](#idselector)
+    - [`pseudoClassSelector`](#pseudoclassselector)
+    - [`pseudoElementSelector`](#pseudoelementselector)
+    - [`typeSelector`](#typeselector)
+    - [`universalSelector`](#universalselector)
+  - [Development](#development)
 
+## Installation
+
+```sh
+# npm
+npm install scalpel --save-dev
+```
+
+```sh
+# yarn
+yarn add scalpel --dev
+```
 ## Usage
 
 ```js
@@ -68,7 +81,7 @@ const tokens: Array<SelectorTokenType | CombinatorTokenType> = parser.parse('.fo
 //   }
 // ]
 
-const selector: string = generator.generate(token);
+const selector: string = generator.generate(tokens);
 
 // .foo.bar
 
