@@ -23,6 +23,7 @@ This parser is implemented using [Earley parser algorithm](https://en.wikipedia.
 > I don't have such a use case. However, should you want to add new grammar, [raise an issue](https://github.com/gajus/scalpel/issues/new).
 
 - [scalpel](#scalpel)
+  - [Installation](#installation)
   - [Usage](#usage)
   - [Token types](#token-types)
   - [Fields](#fields)
@@ -40,6 +41,17 @@ This parser is implemented using [Earley parser algorithm](https://en.wikipedia.
     - [`universalSelector`](#universalselector)
   - [Development](#development)
 
+## Installation
+
+```sh
+# npm
+npm install scalpel --save-dev
+```
+
+```sh
+# yarn
+yarn add scalpel --dev
+```
 ## Usage
 
 ```js
