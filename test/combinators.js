@@ -47,3 +47,14 @@ for (const [selector, types] of Object.entries(combinators)) {
     );
   });
 }
+
+for (const whitespace of ['\n', '\r', '\t', '\f', '\r\n', ' \n\t ']) {
+  for (const combinator of ['', '>', '+', '~']) {
+    const selector = `foo${whitespace}${combinator}${whitespace}bar`;
+    const normalized = combinator ? `foo ${combinator} bar` : 'foo bar';
+
+    test(`CSS whitespace ${JSON.stringify(selector)}`, (t): void => {
+      t.deepEqual(parse(selector), parse(normalized));
+    });
+  }
+}

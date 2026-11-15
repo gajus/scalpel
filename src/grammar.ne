@@ -32,7 +32,8 @@
 
 combinator ->
   selector
-  | combinator _ [>+~ ] _ selector {% concatUsingCombinator %}
+  | combinator whitespace selector {% d => concatUsingCombinator([d[0], null, ' ', null, d[2]]) %}
+  | combinator _ [>+~] _ selector {% concatUsingCombinator %}
 
 selector -> selectorBody {% d => ({type: 'selector', body: d[0]}) %}
 
@@ -125,5 +126,8 @@ sstrchar ->
     [^'] {% id %}
   | "\\'" {% d => '\'' %}
 
+whitespace ->
+  [ \t\n\r\f]:+ {% d => null %}
+
 _ ->
-  [ ]:* {% d => null %}
+  [ \t\n\r\f]:* {% d => null %}
